@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Register User</title>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>   
+    </head>
+    <body>
+        <div class="container">
+            <fieldset>
+                <form action="/adminTasks" method ="post">
+                    <input name="user" type="text" class="ghost-input" placeholder="Enter a User Name" required>
+                    <input name="Organization" type="text" class="ghost-input" placeholder="Enter a Organization" required>
+                    <input type="submit" class="ghost-input" value="Register User">
+                </form>
+                <% if(weather !== null) { %>
+                    <p><%= weather %></p>
+                <% } %>
+
+                <% if(error !== null) { %>
+                    <p><%= error %></p>
+                <% } %>
+            </fieldset>
+        </div>
+    </body>
+</html>

@@ -8,9 +8,25 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true}));
 
-app.get('/', function (req, res) {
+app.get('/temp', function (req, res) {
     res.render('index', {weather: null, error: null});
-}); 
+});
+
+app.get('/', function (req, res) {
+    res.render('registerUser', {weather: null, error: null});
+});
+
+app.post('/adminTasks', function (req, res) {
+    res.render('adminTasks', {weather: null, error: null});
+});
+
+app.post('/dashboard', function (req, res) {
+    res.render('dashboard', {weather: null, error: null});
+});
+
+app.post('/transferAmount', function (req, res) {
+    res.render('transferAmount', {weather: null, error: null});
+});
 
 app.post('/', function (req, res) {
     let city = req.body.city;

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>User Dashboard</title>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>   
+    </head>
+    <body>
+        <div class="container">
+            <img src="/Images/face/zapzap.jpg">
+            <p>Cláudio Ramos</p>
+            <p>Balance: ||1000|| SAP Coins</p>
+            <p>Lastest transaction:</p>
+            <p>None</p>            
+            <fieldset>
+                <form action="/transferAmount" method ="post">
+                    <input type="submit" class="ghost-input" value="Transfer">
+                </form>
+            </fieldset>
+            <p>EXPERT MODE:</p>    
+            <fieldset>
+                <p>Queries:</p>    
+                <form action="/chaincode" method ="post">
+                    <input type="submit" class="ghost-input" value="Chaincode">
+                </form>
+                <form action="/blockByNumber" method ="post">
+                    <input type="submit" class="ghost-input" value="Block By Number">
+                </form>
+                <form action="/transactionByID" method ="post">
+                    <input type="submit" class="ghost-input" value="Transaction By ID">
+                </form>
+                <form action="/chainInformation" method ="post">
+                    <input type="submit" class="ghost-input" value="Chain Information">
+                </form>
+                <form action="/installedChaincode" method ="post">
+                    <input type="submit" class="ghost-input" value="Installed Chaincode">
+                </form>
+                <form action="/instatiatedChaincode" method ="post">
+                    <input type="submit" class="ghost-input" value="Instantiated Chaincode">
+                </form>
+                <form action="/channels" method ="post">
+                    <input type="submit" class="ghost-input" value="Channels">
+                </form>
+                <% if(weather !== null) { %>
+                    <p><%= weather %></p>
+                <% } %>
+
+                <% if(error !== null) { %>
+                    <p><%= error %></p>
+                <% } %>
+            </fieldset>
+        </div>
+    </body>
+</html>
