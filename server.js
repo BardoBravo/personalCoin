@@ -23,7 +23,7 @@ app.get('/', function (req, res) {
 app.post('/adminTasks', function (req, res) {
     let user = req.body.user;
     let organization = req.body.organization;
-    let url = `http://localhost:4000?username=${user}&orgName=${organization}`;
+    let url = `http://localhost:4000/user?username=${user}&orgName=${organization}`;
     request(url, function (err, response, body) {
         if(err){
             res.render('registerUser', {response: null, error : 'Error, please try again'});
