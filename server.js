@@ -22,12 +22,15 @@ app.get('/', function (req, res) {
 
 app.post('/adminTasks', function (req, res) {
     let user = req.body.user;
+    console.log(user);
     let organization = req.body.organization;
+    console.log(organization);
     let url = `http://localhost:4000/user?username=${user}&orgName=${organization}`;
     request(url, function (err, response, body) {
         if(err){
             res.render('registerUser', {response: null, error : 'Error, please try again'});
         } else {
+            console.log(body);
             let response = JSON.parse(body)
             console.log(response);
             if(response.success == false) {
