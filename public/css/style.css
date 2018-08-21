@@ -29,6 +29,9 @@ body {
     min-width: -webkit-min-content;
     padding: 30px;
   }
+  .bit-pad {    
+    padding: 0px;
+  }  
   .ghost-input, p {
     display: block;
     font-weight:300;

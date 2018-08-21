@@ -12,6 +12,10 @@ app.get('/temp', function (req, res) {
     res.render('index', {weather: null, error: null});
 });
 
+app.post('/temp', function (req, res) {
+    res.render('index', {weather: null, error: null});
+});
+
 app.get('/', function (req, res) {
     res.render('registerUser', {weather: null, error: null});
 });

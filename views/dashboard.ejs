@@ -8,7 +8,7 @@
     </head>
     <body>
         <div class="container">
-            <img src="/Images/face/zapzap.jpg">
+            <!-- <img src="/Images/face/zapzap.jpg">
             <p>Cláudio Ramos</p>
             <p>Balance: ||1000|| SAP Coins</p>
             <p>Lastest transaction:</p>
@@ -17,30 +17,44 @@
                 <form action="/transferAmount" method ="post">
                     <input type="submit" class="ghost-input" value="Transfer">
                 </form>
-            </fieldset>
-            <p>EXPERT MODE:</p>    
+            </fieldset> -->
+
             <fieldset>
-                <p>Queries:</p>    
+                <form action="/adminTasks" method ="post">
+                    <input type="submit" class="ghost-input" value="Create Channel Request">
+                </form>
+                <form action="/adminTasks" method ="post">
+                    <input type="submit" class="ghost-input" value="Join Channel">
+                </form>
+                <form action="/adminTasks" method ="post">
+                    <input type="submit" class="ghost-input" value="Install Chaincode">
+                </form>
+                <form action="/dashboard" method ="post">
+                    <input type="submit" class="ghost-input" value="Instantiate Chaincode">
+                </form>
+            </fieldset>
+            <p>ADMIN Queries:</p>    
+            <fieldset class="bit-pad">
                 <form action="/chaincode" method ="post">
-                    <input type="submit" class="ghost-input" value="Chaincode">
+                    <input type="submit" class="ghost-button" value="Chaincode">
                 </form>
                 <form action="/blockByNumber" method ="post">
-                    <input type="submit" class="ghost-input" value="Block By Number">
+                    <input type="submit" class="ghost-button" value="Block By Number">
                 </form>
                 <form action="/transactionByID" method ="post">
-                    <input type="submit" class="ghost-input" value="Transaction By ID">
+                    <input type="submit" class="ghost-button" value="Transaction By ID">
                 </form>
                 <form action="/chainInformation" method ="post">
-                    <input type="submit" class="ghost-input" value="Chain Information">
+                    <input type="submit" class="ghost-button" value="Chain Information">
                 </form>
                 <form action="/installedChaincode" method ="post">
-                    <input type="submit" class="ghost-input" value="Installed Chaincode">
+                    <input type="submit" class="ghost-button" value="Installed Chaincode">
                 </form>
                 <form action="/instatiatedChaincode" method ="post">
-                    <input type="submit" class="ghost-input" value="Instantiated Chaincode">
+                    <input type="submit" class="ghost-button" value="Instantiated Chaincode">
                 </form>
                 <form action="/channels" method ="post">
-                    <input type="submit" class="ghost-input" value="Channels">
+                    <input type="submit" class="ghost-button" value="Channels">
                 </form>
                 <% if(weather !== null) { %>
                     <p><%= weather %></p>
