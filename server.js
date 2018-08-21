@@ -17,7 +17,7 @@ app.post('/temp', function (req, res) {
 });
 
 app.get('/', function (req, res) {
-    res.render('registerUser', {weather: null, error: null});
+    res.render('registerUser', {response: null, error: null});
 });
 
 app.post('/adminTasks', function (req, res) {
