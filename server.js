@@ -21,7 +21,25 @@ app.get('/', function (req, res) {
 });
 
 app.post('/adminTasks', function (req, res) {
-    res.render('adminTasks', {weather: null, error: null});
+    let user = req.body.user;
+    let organization = req.body.organization;
+    let url = `http://localhost:4000?username=${user}&orgName=${organization}`;
+    request(url, function (err, response, body) {
+        if(err){
+            res.render('registerUser', {response: null, error : 'Error, please try again'});
+        } else {
+            let response = JSON.parse(body)
+            console.log(response);
+            if(response.success == false) {
+                res.render('registerUser', {response: null, error : 'Error, please try again'});
+            } else {
+                apiKey = response.token;
+                let responseText = response.message;
+                res.render('adminTasks', {response: responseText, error: null});
+            }
+        }
+    })
+    
 });
 
 app.post('/dashboard', function (req, res) {
