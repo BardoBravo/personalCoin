@@ -177,18 +177,18 @@ app.post('/dashboard', function (req, res) {
             function (err, response, body) {
         if(err){
             console.log(err);
-            res.render('dashboard', {response: null, error : 'Error, please try again'});
+            res.render('dashboard', {data: null, error : 'Error, please try again'});
         } else {
-            let response = body;
+            let data = body;
+            console.log(data);
             console.log(response);
-            console.log(response.success);
-            if(response.success == false) {
-                console.log(response.success);
+            console.log(data.success);
+            if(data.success == false) {
                 res.render('dashboard', {response: null, error : 'Error, please try again'});
             } else {
-                let responseText = response.message;
-                console.log(response.message);
-                res.render('dashboard', {response: responseText, error: null});
+                let responseText = data.message;
+                console.log(data.message);
+                res.render('dashboard', {data: responseText, error: null});
             }
         } 
     }).auth(null, null, true,apiKey);
