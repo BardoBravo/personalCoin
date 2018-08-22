@@ -9,7 +9,32 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true}));
 
 app.get('/temp', function (req, res) {
-    res.render('index', {weather: null, error: null});
+    const formData = {
+        "peers": [
+            "peer0.org1.example.com",
+            "peer1.org1.example.com"
+        ],
+        "chaincodeName" : "mycc",
+        "chaincodePath" : "github.com/example_cc/go",
+        "chaincodeType" : "golang",
+        "chaincodeVersion" : "v0"
+    };
+    let url = `http://localhost:4000/channels/mychannel/chaincodes/mycc?peer=peer0.org1.example.com&fcn=query&args=["a"]`;
+    request(url, function (err, response, body) {
+        if(err){
+            console.log(err);
+            res.render('index', {response: null, error : 'Error, please try again'});
+        } else {
+            let response = body;
+            console.log(response);
+            if(response.success == false) {
+                res.render('index', {response: null, error : 'Error, please try again'});
+            } else {
+                let responseText = response.message;
+                res.render('index', {response: responseText, error: null});
+            }
+        } 
+    }).auth(null, null, true,apiKey);
 });
 
 app.post('/temp', function (req, res) {
