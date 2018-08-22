@@ -27,10 +27,11 @@ app.get('/temp', function (req, res) {
         } else {
             let response = body;
             console.log(response);
-            if(response.success == false) {
+            if(response == null) {
                 res.render('index', {response: null, error : 'Error, please try again'});
             } else {
-                let responseText = response.message;
+                let responseText = response.substr(11,3);
+                console.log(responseText);
                 res.render('index', {response: responseText, error: null});
             }
         } 
@@ -175,15 +176,12 @@ app.post('/dashboard', function (req, res) {
                   json: true
             },
             function (err, response, body) {
-        setTimeout( function() {
         if(err){
             console.log(err);
             res.render('dashboard', {data: null, error : 'Error, please try again'});
         } else {
             let data = body;
-            console.log(data);
             console.log(response);
-            console.log(data.success);
             if(data.success == false) {
                 res.render('dashboard', {response: null, error : 'Error, please try again'});
             } else {
@@ -192,7 +190,7 @@ app.post('/dashboard', function (req, res) {
                 res.render('dashboard', {data: responseText, error: null})
             }
         } 
-    }, 10000) } ).auth(null, null, true,apiKey);
+    } ).auth(null, null, true,apiKey);
 });
 
 app.post('/transferAmount', function (req, res) {
