@@ -181,10 +181,13 @@ app.post('/dashboard', function (req, res) {
         } else {
             let response = body;
             console.log(response);
+            console.log(response.success);
             if(response.success == false) {
+                console.log(response.success);
                 res.render('dashboard', {response: null, error : 'Error, please try again'});
             } else {
                 let responseText = response.message;
+                console.log(response.message);
                 res.render('dashboard', {response: responseText, error: null});
             }
         } 
