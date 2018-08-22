@@ -79,8 +79,8 @@ app.post('/joinChannel', function(req, res) {
     };
     let url = `http://localhost:4000/channels/mychannel/peers`;
     request.post({url: url,
-                  body: JSON.stringify(formData),
-                  header: {"content-type": "application/x-www-form-urlencoded"}
+                  body: formData,
+                  json: true
             },
             function (err, response, body) {
         if(err){
