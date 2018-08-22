@@ -47,6 +47,33 @@ app.post('/adminTasks', function (req, res) {
     
 });
 
+app.post('/createChannelRequest', function (req, res) {
+    const formData = {
+        channelName: 'mychannel',
+        channelConfigPath: '../artifacts/channel/mychannel.tx',
+        header: {
+            Authorization: 'Bearer' + apiKey,
+            'Content-Type': 'application/json'
+        }
+    };
+    let url = `http://localhost:4000/channels`;
+    request.post({url: url, form: formData}, function (err, response, body) {
+        if(err){
+            res.render('adminTasks', {response: null, error : 'Error, please try again'});
+        } else {
+            console.log(body);
+            let response = JSON.parse(body)
+            console.log(response);
+            if(response.success == false) {
+                res.render('adminTasks', {response: null, error : 'Error, please try again'});
+            } else {
+                let responseText = response.message;
+                res.render('adminTasks', {response: responseText, error: null});
+            }
+        } 
+    }
+})
+
 app.post('/dashboard', function (req, res) {
     res.render('dashboard', {weather: null, error: null});
 });
