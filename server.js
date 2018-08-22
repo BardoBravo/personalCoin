@@ -51,8 +51,8 @@ app.post('/createChannelRequest', function (req, res) {
     const formData = {
         channelName: 'mychannel',
         channelConfigPath: '../artifacts/channel/mychannel.tx',
-        header: {
-            Authorization: 'Bearer' + apiKey,
+        headers: {
+            'Authorization': 'Bearer' + apiKey,
             'Content-Type': 'application/json'
         }
     };
