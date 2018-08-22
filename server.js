@@ -134,7 +134,36 @@ app.post('/installChaincode', function(req, res) {
 })
 
 app.post('/dashboard', function (req, res) {
-    res.render('dashboard', {weather: null, error: null});
+    const formData = {
+        "peers": [
+            "peer0.org1.example.com",
+            "peer1.org1.example.com"
+        ],
+        "chaincodeName" : "mycc",
+        "chaincodeType" : "golang",
+        "chaincodeVersion" : "v0",
+        "args": ["a","100","b","200"]
+    };
+    let url = `http://localhost:4000/channels/mychannel/chaincodes`;
+    request.post({url: url,
+                  body: formData,
+                  json: true
+            },
+            function (err, response, body) {
+        if(err){
+            console.log(err);
+            res.render('dashboard', {response: null, error : 'Error, please try again'});
+        } else {
+            let response = body;
+            console.log(response);
+            if(response.success == false) {
+                res.render('dashboard', {response: null, error : 'Error, please try again'});
+            } else {
+                let responseText = response.message;
+                res.render('dashboard', {response: responseText, error: null});
+            }
+        } 
+    }).auth(null, null, true,apiKey);
 });
 
 app.post('/transferAmount', function (req, res) {
