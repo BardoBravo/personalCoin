@@ -77,6 +77,7 @@ app.post('/joinChannel', function(req, res) {
     let url = `http://localhost:4000/channels/mychannel/peers`;
     request.post({url: url, formData: formData}, function (err, response, body) {
         if(err){
+            console.log(err);
             res.render('adminTasks', {response: null, error : 'Error, please try again'});
         } else {
             console.log(body);
