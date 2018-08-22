@@ -33,13 +33,6 @@
                     <input type="submit" class="ghost-input" value="Instantiate Chaincode">
                 </form>
             </fieldset>
-            <% if(response !== null) { %>
-                <p><%= response %></p>
-            <% } %>
-
-            <% if(error !== null) { %>
-                <p><%= error %></p>
-            <% } %>
             <p>ADMIN Queries:</p>    
             <fieldset class="bit-pad">
                 <form action="/chaincode" method ="post">
@@ -63,6 +56,13 @@
                 <form action="/channels" method ="post">
                     <input type="submit" class="ghost-button" value="Channels">
                 </form>
+                <% if(response !== null) { %>
+                    <p><%= response %></p>
+                <% } %>
+
+                <% if(error !== null) { %>
+                    <p><%= error %></p>
+                <% } %>
             </fieldset>
         </div>
     </body>
