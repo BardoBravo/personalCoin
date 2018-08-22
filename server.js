@@ -88,7 +88,7 @@ app.post('/joinChannel', function(req, res) {
             res.render('adminTasks', {response: null, error : 'Error, please try again'});
         } else {
             console.log(body);
-            let response = JSON.parse(body)
+            let response = body;
             console.log(response);
             if(response.success == false) {
                 res.render('adminTasks', {response: null, error : 'Error, please try again'});
