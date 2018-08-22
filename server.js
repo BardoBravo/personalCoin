@@ -57,7 +57,7 @@ app.post('/createChannelRequest', function (req, res) {
         }
     };
     let url = `http://localhost:4000/channels`;
-    request.post({url: url, form: formData}, function (err, response, body) {
+    request.post(url, formData, function (err, response, body) {
         if(err){
             res.render('adminTasks', {response: null, error : 'Error, please try again'});
         } else {
@@ -71,7 +71,7 @@ app.post('/createChannelRequest', function (req, res) {
                 res.render('adminTasks', {response: responseText, error: null});
             }
         } 
-    })
+    }).auth(null, null, true,apiKey);
 });
 
 app.post('/dashboard', function (req, res) {
