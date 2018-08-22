@@ -30,7 +30,7 @@ app.get('/temp', function (req, res) {
             if(response == null) {
                 res.render('index', {response: null, error : 'Error, please try again'});
             } else {
-                let responseText = response.substr(11,3);
+                let responseText = response.substr(10,3);
                 console.log(responseText);
                 res.render('index', {response: responseText, error: null});
             }
