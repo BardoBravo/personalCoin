@@ -188,7 +188,7 @@ app.post('/dashboard', function (req, res) {
             } else {
                 let responseText = data.message;
                 console.log(data.message);
-                setTimeout( function() { res.render('dashboard', {data: responseText, error: null}) }, 10000);
+                setTimeout( function() { res.render('dashboard', {data: responseText, error: null}) }, 100000);
             }
         } 
     }).auth(null, null, true,apiKey);
