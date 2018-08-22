@@ -72,7 +72,10 @@ app.post('/createChannelRequest', function (req, res) {
 
 app.post('/joinChannel', function(req, res) {
     const formData = {
-        peers: ["peer0.org1.example.com","peer1.org1.example.com"]
+        peers: [
+            'peer0.org1.example.com',
+            'peer1.org1.example.com'
+        ]
     };
     let url = `http://localhost:4000/channels/mychannel/peers`;
     request.post({url: url, formData: formData}, function (err, response, body) {
