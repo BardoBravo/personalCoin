@@ -175,6 +175,7 @@ app.post('/dashboard', function (req, res) {
                   json: true
             },
             function (err, response, body) {
+        setTimeout( function() {
         if(err){
             console.log(err);
             res.render('dashboard', {data: null, error : 'Error, please try again'});
@@ -188,10 +189,10 @@ app.post('/dashboard', function (req, res) {
             } else {
                 let responseText = data.message;
                 console.log(data.message);
-                setTimeout( function() { res.render('dashboard', {data: responseText, error: null}) }, 100000);
+                res.render('dashboard', {data: responseText, error: null})
             }
         } 
-    }).auth(null, null, true,apiKey);
+    }, 10000) } ).auth(null, null, true,apiKey);
 });
 
 app.post('/transferAmount', function (req, res) {
