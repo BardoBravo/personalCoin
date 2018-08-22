@@ -50,14 +50,10 @@ app.post('/adminTasks', function (req, res) {
 app.post('/createChannelRequest', function (req, res) {
     const formData = {
         channelName: 'mychannel',
-        channelConfigPath: '../artifacts/channel/mychannel.tx',
-        headers: {
-            'Authorization': 'Bearer' + apiKey,
-            'Content-Type': 'application/json'
-        }
+        channelConfigPath: '../artifacts/channel/mychannel.tx'        
     };
     let url = `http://localhost:4000/channels`;
-    request.post(url, formData, function (err, response, body) {
+    request.post({url: url, form: formData}, function (err, response, body) {
         if(err){
             res.render('adminTasks', {response: null, error : 'Error, please try again'});
         } else {
