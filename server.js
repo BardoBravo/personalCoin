@@ -71,8 +71,8 @@ app.post('/createChannelRequest', function (req, res) {
                 res.render('adminTasks', {response: responseText, error: null});
             }
         } 
-    }
-})
+    })
+});
 
 app.post('/dashboard', function (req, res) {
     res.render('dashboard', {weather: null, error: null});
