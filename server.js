@@ -53,7 +53,7 @@ app.post('/temp', function (req, res) {
                 res.render('index', {response: null, error : 'Error, please try again'});
             } else {
                 let url2 = `http://localhost:4000/channels/mychannel/chaincodes/mycc?peer=peer0.org1.example.com&fcn=query&args=["a"]`;
-                request(url, function (err, response, body) {
+                request(url2, function (err, response, body) {
                     if(err){
                         console.log(err);
                         res.render('index', {response: null, error : 'Error, please try again'});
