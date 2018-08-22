@@ -39,7 +39,7 @@ app.post('/temp', function (req, res) {
         "args" : [req.body.seller,"b", req.body.amount ]
     };
     let url = `http://localhost:4000/channels/mychannel/chaincodes/mycc`;
-    request({url: url,
+    request.post({url: url,
             body: formData,
             json: true
             }, function (err, response, body) {
@@ -47,12 +47,14 @@ app.post('/temp', function (req, res) {
             console.log(err);
             res.render('index', {response: null, error : 'Error, please try again'});
         } else {
+            console.log("A");
             let response = body;
             console.log(response);
             if(response == null) {
                 res.render('index', {response: null, error : 'Error, please try again'});
             } else {
                 let url2 = `http://localhost:4000/channels/mychannel/chaincodes/mycc?peer=peer0.org1.example.com&fcn=query&args=["a"]`;
+                console.log("B");
                 request(url2, function (err, response, body) {
                     if(err){
                         console.log(err);
@@ -60,11 +62,13 @@ app.post('/temp', function (req, res) {
                     } else {
                         let response = body;
                         console.log(response);
+                        console.log("C");
                         if(response == null) {
                             res.render('index', {response: null, error : 'Error, please try again'});
                         } else {
                             let responseText = response.substr(10,3);
                             console.log(responseText);
+                            console.log("D");
                             res.render('index', {response: responseText, error: null});
                         }
                     } 
