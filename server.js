@@ -24,8 +24,8 @@ app.post('/adminTasks', function (req, res) {
     let user = req.body.user;
     let organization = req.body.organization;
     const formData = {
-        user: user,
-        organization: organization
+        username: user,
+        orgName: organization
     };
     let url = `http://localhost:4000/users`;
     request.post({url: url, form: formData}, function (err, response, body) {
