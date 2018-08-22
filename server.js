@@ -70,6 +70,28 @@ app.post('/createChannelRequest', function (req, res) {
     }).auth(null, null, true,apiKey);
 });
 
+app.post('/joinChannel', function(req, res) {
+    const formData = {
+        peers: ["peer0.org1.example.com","peer1.org1.example.com"]
+    };
+    let url = `http://localhost:4000/channels/mychannel/peers`;
+    request.post({url: url, form: formData}, function (err, response, body) {
+        if(err){
+            res.render('adminTasks', {response: null, error : 'Error, please try again'});
+        } else {
+            console.log(body);
+            let response = JSON.parse(body)
+            console.log(response);
+            if(response.success == false) {
+                res.render('adminTasks', {response: null, error : 'Error, please try again'});
+            } else {
+                let responseText = response.message;
+                res.render('adminTasks', {response: responseText, error: null});
+            }
+        } 
+    }).auth(null, null, true,apiKey);
+})
+
 app.post('/dashboard', function (req, res) {
     res.render('dashboard', {weather: null, error: null});
 });
